@@ -17,6 +17,7 @@ class Fraction:
         othervlue = other.__add__()
         if selfvalue < othervlue:
             return True
-        elif selfvalue == othervlue: return "Equal"
+        elif selfvalue == othervlue:
+            return "Equal"
         else:
             return False
