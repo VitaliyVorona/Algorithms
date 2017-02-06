@@ -1,6 +1,6 @@
 def check_line(line):
-    XZ_pattern = [(lambda x: 'X:Z')(x) for x in range(len(line))]
-    ZX_pattern = [(lambda x: 'Z:X')(x) for x in range(len(line))]
+    XZ_pattern = [(lambda x: 'X:Z')(x) for x in range(len(line)+1//2)]
+    ZX_pattern = [(lambda x: 'Z:X')(x) for x in range(len(line)+1//2)]
 
     isCrystal = True
     pattern_holder = []
