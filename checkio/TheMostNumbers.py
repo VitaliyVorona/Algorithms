@@ -1,26 +1,15 @@
-def most_numbers(*args):
-    args = sorted(args)
-    min_value = float(args[0])
-    print('min value', min_value)
-    max_value = float(args[len(args) - 1])
-    print('max value', max_value)
-    value_btw_min_max = 0
-    kostyl = round(max_value % 1, 2)
-
-    while min_value <= max_value:
-        print(min_value, "--", max_value)
-        if value_btw_min_max == 0:
-            fract_min_val = abs(min_value)
-            value_btw_min_max += round(fract_min_val % 1, 2)
-            print(value_btw_min_max)
-        else:
-            value_btw_min_max += 1
-            print(value_btw_min_max)
-            min_value += 1
-
-    print('ko', kostyl)
-    return (value_btw_min_max - 1) + kostyl
+def checkio(*args):
+    return max(args) - min(args) if args else 0
 
 
-x = most_numbers(10.2, -2.2, 0, 1.1, 0.5)
-print(x)
+#These "asserts" using only for self-checking and not necessary for auto-testing
+if __name__ == '__main__':
+    def almost_equal(checked, correct, significant_digits):
+        precision = 0.1 ** significant_digits
+        return correct - precision < checked < correct + precision
+
+    assert almost_equal(checkio(1, 2, 3), 2, 3), "3-1=2"
+    assert almost_equal(checkio(5, -5), 10, 3), "5-(-5)=10"
+    assert almost_equal(checkio(-0.036,-0.11,-0.55,-64), 63.964, 3), "63.964"
+    assert almost_equal(checkio(10.2, -2.2, 0, 1.1, 0.5), 12.4, 3), "10.2-(-2.2)=12.4"
+    assert almost_equal(checkio(), 0, 3), "Empty"
