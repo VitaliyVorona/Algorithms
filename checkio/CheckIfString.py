@@ -1,20 +1,23 @@
 def checkio(words):
-    words = words.split(' ')
-    isWord = True
+    words = words.split()
     counter = 0
     for s in words:
-        if isinstance(s, str):
-                counter += 1
-        if s.isdigit():
-                isWord = False
-                counter = 0
-        if counter < 3:
-            isWord = False
-        if counter >= 3:
-            isWord = True
-            break
-    return isWord
+        if s.isalpha():
+            if counter == 2:
+                return True
+            counter += 1
 
+        else:
+            counter = 0
+    return False
+
+
+def checkio_second(words):
+    succ = 0
+    for word in words.split():
+        succ = (succ + 1)*word.isalpha()
+        if succ == 3: return True
+    else: return False
 
 # These "asserts" using only for self-checking and not necessary for auto-testing
 if __name__ == '__main__':
